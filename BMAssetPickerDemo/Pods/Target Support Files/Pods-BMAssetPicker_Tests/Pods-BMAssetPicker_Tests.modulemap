@@ -1,0 +1,6 @@
+framework module Pods_BMAssetPicker_Tests {
+  umbrella header "Pods-BMAssetPicker_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

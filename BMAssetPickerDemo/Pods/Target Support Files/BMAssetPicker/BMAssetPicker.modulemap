@@ -1,0 +1,6 @@
+framework module BMAssetPicker {
+  umbrella header "BMAssetPicker-umbrella.h"
+
+  export *
+  module * { export * }
+}

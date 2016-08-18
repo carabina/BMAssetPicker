@@ -1,0 +1,19 @@
+PODS:
+  - BMAssetPicker (0.1.0):
+    - PureLayout (~> 3.0.2)
+  - PureLayout (3.0.2)
+
+DEPENDENCIES:
+  - BMAssetPicker (from `../`)
+
+EXTERNAL SOURCES:
+  BMAssetPicker:
+    :path: ../
+
+SPEC CHECKSUMS:
+  BMAssetPicker: 6afe205a930bd6fa86451967737c2b1d75bcab2a
+  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+
+PODFILE CHECKSUM: 164003f80e3e55a0d5ce5459e645487b7b276f6d
+
+COCOAPODS: 1.0.1

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BMAssetPicker
 
 class ViewController: UIViewController {
 
@@ -15,9 +16,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func onPresentButtonPressed(sender: AnyObject) {
+        let vc = BMAssetPicker()
+        self.presentViewController(vc, animated: true, completion: nil)
     }
 
 }
