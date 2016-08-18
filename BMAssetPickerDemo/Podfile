@@ -1,11 +1,12 @@
 use_frameworks!
 
 target 'BMAssetPicker_Example' do
-  pod 'BMAssetPicker', :path => '../'
-
-  target 'BMAssetPicker_Tests' do
-    inherit! :search_paths
-
+    pod 'BMAssetPicker', :path => '../'
     
-  end
+    pod 'Reveal-iOS-SDK', :configurations => ['Debug']
+    target 'BMAssetPicker_Tests' do
+        inherit! :search_paths
+        
+        
+    end
 end

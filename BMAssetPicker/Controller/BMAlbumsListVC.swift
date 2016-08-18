@@ -28,6 +28,7 @@ class BMAlbumsListVC: UIViewController {
         tableView.dataSource = self
         tableView.rowHeight  = 90
         tableView.separatorStyle = .None
+        tableView.clipsToBounds  = false
         
         self.view.addSubview(tableView)
         tableView.snp_makeConstraints { (make) in
@@ -53,5 +54,9 @@ extension BMAlbumsListVC: UITableViewDataSource {
 }
 
 extension BMAlbumsListVC: UITableViewDelegate {
-    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let vc = BMAssetsListViewController(nibName: "BMAssetsListViewController", bundle: BMAssetBundle)
+        vc.album = albums[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

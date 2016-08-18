@@ -1,10 +1,12 @@
 PODS:
   - BMAssetPicker (0.1.0):
     - SnapKit
+  - Reveal-iOS-SDK (1.6.2)
   - SnapKit (0.22.0)
 
 DEPENDENCIES:
   - BMAssetPicker (from `../`)
+  - Reveal-iOS-SDK
 
 EXTERNAL SOURCES:
   BMAssetPicker:
@@ -12,8 +14,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   BMAssetPicker: 16102e70120612521ef2a834a49b0970ede3590a
+  Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
   SnapKit: 0dd2fd157330f1ea11fd84da13e6be8a7a22bae0
 
-PODFILE CHECKSUM: 164003f80e3e55a0d5ce5459e645487b7b276f6d
+PODFILE CHECKSUM: 758980ad0d720967537d1f042b93a08d88885771
 
 COCOAPODS: 1.0.1
