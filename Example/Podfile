@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'BMAssetPicker_Example' do
+  pod 'BMAssetPicker', :path => '../'
+
+  target 'BMAssetPicker_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
