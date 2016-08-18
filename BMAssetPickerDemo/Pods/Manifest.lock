@@ -1,7 +1,7 @@
 PODS:
   - BMAssetPicker (0.1.0):
-    - PureLayout (~> 3.0.2)
-  - PureLayout (3.0.2)
+    - SnapKit
+  - SnapKit (0.22.0)
 
 DEPENDENCIES:
   - BMAssetPicker (from `../`)
@@ -11,8 +11,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  BMAssetPicker: 6afe205a930bd6fa86451967737c2b1d75bcab2a
-  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+  BMAssetPicker: 16102e70120612521ef2a834a49b0970ede3590a
+  SnapKit: 0dd2fd157330f1ea11fd84da13e6be8a7a22bae0
 
 PODFILE CHECKSUM: 164003f80e3e55a0d5ce5459e645487b7b276f6d
 

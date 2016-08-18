@@ -29,8 +29,8 @@
     "MapKit"
   ],
   "dependencies": {
-    "PureLayout": [
-      "~> 3.0.2"
+    "SnapKit": [
+
     ]
   }
 }
