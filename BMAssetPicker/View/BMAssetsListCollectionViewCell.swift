@@ -12,13 +12,20 @@ import Photos
 class BMAssetsListCollectionViewCell: UICollectionViewCell {
     
     var asset: PHAsset?
+    var assetSelected = false
     
     @IBOutlet weak var coverImage: UIImageView!
+    @IBOutlet weak var mainView: UIView!
     
+    @IBOutlet weak var selectedView: UIView!
+    @IBOutlet weak var selectedIndex: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.grayColor()
+        selectedView.layer.cornerRadius = 10
+        selectedView.layer.borderWidth  = 1
+        selectedView.layer.borderColor  = UIColor.whiteColor().CGColor
+        selectedView.hidden = true
     }
     
     
@@ -37,17 +44,34 @@ class BMAssetsListCollectionViewCell: UICollectionViewCell {
             self.coverImage.image = result
             print(result?.size)
         }
-        updateUI()
+        updateUI(animated: false)
     }
     
-    func updateUI() {
+    func updateUI(animated animated: Bool = true) {
         if BMAssetManager.selectedAssets.contains(asset!) {
-            coverImage.layer.borderColor = UIColor ( red: 0.9452, green: 0.0, blue: 1.0, alpha: 1.0 ).CGColor
-            coverImage.layer.borderWidth = 3
+            coverImage.layer.borderColor = BMAssetManager.tintColor.CGColor
+            coverImage.layer.borderWidth = 2
+            selectedView.hidden = false
+            assetSelected = true
+            let index = (BMAssetManager.selectedAssets.bm_lastIndexOf(asset!)  ?? 0) + 1
+            selectedIndex.text  = "\(index)"
         } else {
             coverImage.layer.borderColor = UIColor.clearColor().CGColor
             coverImage.layer.borderWidth = 0
-            
+            selectedView.hidden = true
+            assetSelected = false
         }
+        
+        if !animated {
+            return
+        }
+        
+        UIView.animateWithDuration(0.1) { 
+            self.mainView.transform = CGAffineTransformMakeScale(0.9, 0.9)
+        }
+        
+        UIView.animateWithDuration(0.1, delay: 0.1, options: UIViewAnimationOptions.CurveEaseInOut, animations: { 
+            self.mainView.transform = CGAffineTransformMakeScale(1, 1)
+            }, completion: nil)
     }
 }

@@ -9,10 +9,15 @@
 import Foundation
 import Photos
 
-let BMAssetManager = BMAssetPickerManager.shared
+public let BMAssetManager = BMAssetPickerManager.shared
 
-class BMAssetPickerManager {
+public class BMAssetPickerManager {
     static let shared = BMAssetPickerManager()
     
-    var selectedAssets: Set<PHAsset> = []
+    var selectedAssets: [PHAsset] = []
+    
+    public var tintColor = UIColor.blueColor()
 }
+
+
+

@@ -13,23 +13,60 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TTs-uy-KYI">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="95k-pd-O2U">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                    </imageView>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TTs-uy-KYI">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nA9-2J-eEd">
+                                <rect key="frame" x="72" y="72" width="20" height="20"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kDU-iz-AhC">
+                                        <rect key="frame" x="2" y="2" width="16" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="kDU-iz-AhC" firstAttribute="top" secondItem="nA9-2J-eEd" secondAttribute="top" constant="2" id="1gf-Oi-Qq1"/>
+                                    <constraint firstAttribute="bottom" secondItem="kDU-iz-AhC" secondAttribute="bottom" constant="2" id="2Z1-cd-j6e"/>
+                                    <constraint firstAttribute="width" constant="20" id="368-Du-i40"/>
+                                    <constraint firstItem="kDU-iz-AhC" firstAttribute="leading" secondItem="nA9-2J-eEd" secondAttribute="leading" constant="2" id="OwA-cD-X78"/>
+                                    <constraint firstAttribute="height" constant="20" id="X8v-IR-1ez"/>
+                                    <constraint firstAttribute="trailing" secondItem="kDU-iz-AhC" secondAttribute="trailing" constant="2" id="vK3-jK-qfP"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="nA9-2J-eEd" secondAttribute="bottom" constant="8" id="6dT-EM-5JQ"/>
+                            <constraint firstItem="TTs-uy-KYI" firstAttribute="top" secondItem="95k-pd-O2U" secondAttribute="top" id="Jnj-Cm-pTv"/>
+                            <constraint firstAttribute="trailing" secondItem="nA9-2J-eEd" secondAttribute="trailing" constant="8" id="LWY-qi-b2f"/>
+                            <constraint firstAttribute="trailing" secondItem="TTs-uy-KYI" secondAttribute="trailing" id="eAr-zn-epN"/>
+                            <constraint firstItem="TTs-uy-KYI" firstAttribute="leading" secondItem="95k-pd-O2U" secondAttribute="leading" id="gWc-CS-psc"/>
+                            <constraint firstAttribute="bottom" secondItem="TTs-uy-KYI" secondAttribute="bottom" id="ous-BO-oOh"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="TTs-uy-KYI" secondAttribute="bottom" id="O99-fx-gbM"/>
-                <constraint firstItem="TTs-uy-KYI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Y2f-sN-3O7"/>
-                <constraint firstAttribute="trailing" secondItem="TTs-uy-KYI" secondAttribute="trailing" id="baa-8W-81D"/>
-                <constraint firstItem="TTs-uy-KYI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dXB-bn-k24"/>
+                <constraint firstAttribute="bottom" secondItem="95k-pd-O2U" secondAttribute="bottom" id="MEc-cf-8MY"/>
+                <constraint firstItem="95k-pd-O2U" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MVz-iz-uz6"/>
+                <constraint firstAttribute="trailing" secondItem="95k-pd-O2U" secondAttribute="trailing" id="gDO-5Q-is9"/>
+                <constraint firstItem="95k-pd-O2U" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="j0X-uH-EQZ"/>
             </constraints>
             <size key="customSize" width="161" height="136"/>
             <connections>
                 <outlet property="coverImage" destination="TTs-uy-KYI" id="p0Z-iO-Lqy"/>
+                <outlet property="mainView" destination="95k-pd-O2U" id="gM7-jk-NG2"/>
+                <outlet property="selectedIndex" destination="kDU-iz-AhC" id="xAB-z0-5s4"/>
+                <outlet property="selectedView" destination="nA9-2J-eEd" id="t0Y-ll-hBH"/>
             </connections>
-            <point key="canvasLocation" x="341.5" y="703"/>
+            <point key="canvasLocation" x="341" y="703"/>
         </collectionViewCell>
     </objects>
 </document>

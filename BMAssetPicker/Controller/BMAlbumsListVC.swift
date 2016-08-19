@@ -22,7 +22,7 @@ class BMAlbumsListVC: UIViewController {
     
     func setupView() {
         automaticallyAdjustsScrollViewInsets = false
-        
+        title = "相册"
         view.backgroundColor = UIColor.whiteColor()
         
         let tableView = UITableView()

@@ -25,7 +25,16 @@ class BMAssetsListViewController: UIViewController {
         
     }
 
-    
+    /**
+     取消选择 Asset 时更新数字
+     */
+    func updateSelectedCellsIndex() {
+        for cell in collectionView.visibleCells() {
+            if let cell = cell as? BMAssetsListCollectionViewCell where cell.assetSelected {
+                cell.updateUI(animated: false)
+            }
+        }
+    }
     
 }
 
@@ -49,12 +58,16 @@ extension BMAssetsListViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell  = collectionView.cellForItemAtIndexPath(indexPath) as! BMAssetsListCollectionViewCell
         let asset = cell.asset!
+        
         if BMAssetManager.selectedAssets.contains(asset) {
+            // Remove From Selected List
             delegate?.pickerDidDeselectAsset(asset)
-            BMAssetManager.selectedAssets.remove(asset)
+            BMAssetManager.selectedAssets.bm_removeObject(asset)
+            updateSelectedCellsIndex()
         } else {
+            // Add to Selected List
             delegate?.pickerDidSelectAsset(asset)
-            BMAssetManager.selectedAssets.insert(asset)
+            BMAssetManager.selectedAssets.append(asset)
         }
         cell.updateUI()
     }
@@ -63,7 +76,7 @@ extension BMAssetsListViewController: UICollectionViewDelegate {
 extension BMAssetsListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let ScreenWidth = UIScreen.mainScreen().bounds.width
-        let cellWidth   = (ScreenWidth - 3 * 2)/4
+        let cellWidth   = (ScreenWidth - 2 * 2)/3
         return CGSize(width: cellWidth, height: cellWidth)
     }
 }
