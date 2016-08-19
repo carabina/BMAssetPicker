@@ -24,6 +24,8 @@
 		4B806B6898A4B45297C8F4AF5B4955BB /* Pods-BMAssetPicker_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AAE7BDAFFB53AC8C025131C23439BCA2 /* Pods-BMAssetPicker_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58C3A52ABC6E3C08A4C5DCA7DEB62D0D /* SnapKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 52154A26469A7C2E935B70B6AC694462 /* SnapKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		59A71A55A217D95809163000902FFDF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C4DC7DC1FB7FDDE417C425591BBA06 /* UIKit.framework */; };
+		6A0CF5851D66090E006FFC3E /* BMAssetPickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0CF5841D66090E006FFC3E /* BMAssetPickerManager.swift */; };
+		6A39C5951D660FA200999E73 /* UIViewController+BMAssetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A39C5941D660FA200999E73 /* UIViewController+BMAssetPicker.swift */; };
 		6D8CD55A5C61AFA48411C768A2F846AD /* View+SnapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266BE60EC43A8C041634FB001E871CC /* View+SnapKit.swift */; };
 		7C61EC1FC756621C884E72CCB4542654 /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D2F6337A59BE4CD8F28B3D74F5F8F3 /* ConstraintDescription.swift */; };
 		838E2250A9DAC8C55C2F98794E4A05FE /* Pods-BMAssetPicker_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AE063C7B8221775CB873E600F0C5491A /* Pods-BMAssetPicker_Tests-dummy.m */; };
@@ -107,6 +109,8 @@
 		64FDEEC11AB4B2BAC08C2528FEC5F207 /* SnapKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.xcconfig; sourceTree = "<group>"; };
 		66B21EB0FABD80E46E5209DFF6C26863 /* ConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintItem.swift; path = Source/ConstraintItem.swift; sourceTree = "<group>"; };
 		69101525A55C1CA8D77FEF4EADA46641 /* BMAssetPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BMAssetPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A0CF5841D66090E006FFC3E /* BMAssetPickerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMAssetPickerManager.swift; sourceTree = "<group>"; };
+		6A39C5941D660FA200999E73 /* UIViewController+BMAssetPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+BMAssetPicker.swift"; sourceTree = "<group>"; };
 		73B5DC0911FD7A5512865772F74BE228 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
 		7A1AA67F6A9D26C5EA8EBE5BE1CD7010 /* BMAssetsListCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BMAssetsListCollectionViewCell.swift; sourceTree = "<group>"; };
 		82F7915F528A52E82522BDB1D0D2DE59 /* ConstraintMaker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMaker.swift; path = Source/ConstraintMaker.swift; sourceTree = "<group>"; };
@@ -270,6 +274,7 @@
 				927D8ADEB1EA943E2A007C57FB3ADD10 /* BMAlbumsListVC.swift */,
 				8786B6E22A9273038E75C52D493ADE33 /* BMAssetPicker.swift */,
 				A3773456A1177676C9D7CC341C87878A /* BMAssetsListViewController.swift */,
+				6A0CF5841D66090E006FFC3E /* BMAssetPickerManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -405,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				8A7DA184DB6FE951525AF726F01E422E /* PHAssetCollection+BMAssetPicker.swift */,
+				6A39C5941D660FA200999E73 /* UIViewController+BMAssetPicker.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -650,6 +656,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A39C5951D660FA200999E73 /* UIViewController+BMAssetPicker.swift in Sources */,
 				4472FEC09D6E6A9EDA5863B1EA8E0643 /* BMAlbumsListVC.swift in Sources */,
 				B328655C63CD7C551D08B02A87054CB1 /* BMAssetAlbumListTableViewCell.swift in Sources */,
 				47097131DA8B2CD70BB3863B1010A61F /* BMAssetMacros.swift in Sources */,
@@ -657,6 +664,7 @@
 				F4F6CF1DE854CE98597CF986098D3914 /* BMAssetPicker.swift in Sources */,
 				9DAB8EE4104E9D63124A75D51EFC3B6F /* BMAssetsListCollectionViewCell.swift in Sources */,
 				198C46A58611484F676B149A27948E59 /* BMAssetsListViewController.swift in Sources */,
+				6A0CF5851D66090E006FFC3E /* BMAssetPickerManager.swift in Sources */,
 				D887D8215D8F52352D3FC8E446DF2F3F /* PHAssetCollection+BMAssetPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

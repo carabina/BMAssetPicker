@@ -19,7 +19,15 @@ class ViewController: UIViewController {
     
     @IBAction func onPresentButtonPressed(sender: AnyObject) {
         let vc = BMAssetPicker()
-        self.presentViewController(vc, animated: true, completion: nil)
+        bm_presentImagePickerController(vc, animated: true, select: { (asset) in
+                print("selected \(asset)")
+            }, deselect: { (asset) in
+                print("deselect \(asset)")
+            }, cancel: { (assets) in
+                
+            }, finish: { (assets) in
+                
+            }, completion: nil)
     }
 
 }

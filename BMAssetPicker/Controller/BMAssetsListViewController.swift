@@ -12,13 +12,14 @@ import Photos
 class BMAssetsListViewController: UIViewController {
 
     var album:BMAlbum!
+    weak var delegate: BMAssetPickerPickDelegate?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         automaticallyAdjustsScrollViewInsets = false
-        
+        view.backgroundColor = UIColor.whiteColor()
         let cellNib = UINib(nibName: "BMAssetsListCollectionViewCell", bundle: BMAssetBundle)
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "BMAssetsListCollectionViewCell")
         
@@ -36,7 +37,8 @@ extension BMAssetsListViewController: UICollectionViewDataSource {
    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BMAssetsListCollectionViewCell", forIndexPath: indexPath) as! BMAssetsListCollectionViewCell
-        cell.blind(self.album.asstes[indexPath.row] as! PHAsset)
+        let asset = self.album.asstes[indexPath.row] as! PHAsset
+        cell.blind(asset)
         return cell
     }
 
@@ -44,7 +46,18 @@ extension BMAssetsListViewController: UICollectionViewDataSource {
 
 
 extension BMAssetsListViewController: UICollectionViewDelegate {
-    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell  = collectionView.cellForItemAtIndexPath(indexPath) as! BMAssetsListCollectionViewCell
+        let asset = cell.asset!
+        if BMAssetManager.selectedAssets.contains(asset) {
+            delegate?.pickerDidDeselectAsset(asset)
+            BMAssetManager.selectedAssets.remove(asset)
+        } else {
+            delegate?.pickerDidSelectAsset(asset)
+            BMAssetManager.selectedAssets.insert(asset)
+        }
+        cell.updateUI()
+    }
 }
 
 extension BMAssetsListViewController: UICollectionViewDelegateFlowLayout {

@@ -10,15 +10,25 @@ import UIKit
 import Photos
 import PhotosUI
 
+protocol BMAssetPickerPickDelegate: class {
+    func pickerDidSelectAsset(asset:PHAsset)
+    func pickerDidDeselectAsset(asset:PHAsset)
+}
+
 public class BMAssetPicker: UIViewController {
     
     var assetCollectionSubtypes = [PHAssetCollectionSubtype]()
     var albums:[BMAlbum] = []
     
+    var selectionClosure: ((asset: PHAsset) -> Void)?
+    var deselectionClosure: ((asset: PHAsset) -> Void)?
+    var cancelClosure: ((assets: [PHAsset]) -> Void)?
+    var finishClosure: ((assets: [PHAsset]) -> Void)?
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
         initAssetCollectionSubtypes()
-        
+        view.backgroundColor = UIColor.whiteColor()
         BMAssetPicker.authorize { (authorized) in
             if authorized {
                 self.fetchAssetCollections()
@@ -38,6 +48,7 @@ public class BMAssetPicker: UIViewController {
     func addBaseController() {
         let vc  = BMAlbumsListVC()
         vc.albums = self.albums
+        vc.picker = self
         
         let nav = UINavigationController(rootViewController: vc)
         nav.view.frame = self.view.frame
@@ -122,3 +133,13 @@ public class BMAssetPicker: UIViewController {
     }
 }
 
+extension BMAssetPicker: BMAssetPickerPickDelegate {
+    func pickerDidSelectAsset(asset: PHAsset) {
+        self.selectionClosure?(asset: asset)
+    }
+    
+    
+    func pickerDidDeselectAsset(asset: PHAsset) {
+        self.deselectionClosure?(asset: asset)
+    }
+}

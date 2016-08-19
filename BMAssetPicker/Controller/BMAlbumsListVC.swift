@@ -12,7 +12,7 @@ import SnapKit
 
 class BMAlbumsListVC: UIViewController {
     
-    
+    weak var picker : BMAssetPicker!
     var albums:[BMAlbum] = []
     
     override func viewDidLoad() {
@@ -22,6 +22,8 @@ class BMAlbumsListVC: UIViewController {
     
     func setupView() {
         automaticallyAdjustsScrollViewInsets = false
+        
+        view.backgroundColor = UIColor.whiteColor()
         
         let tableView = UITableView()
         tableView.delegate   = self
@@ -57,6 +59,7 @@ extension BMAlbumsListVC: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc = BMAssetsListViewController(nibName: "BMAssetsListViewController", bundle: BMAssetBundle)
         vc.album = albums[indexPath.row]
+        vc.delegate = self.picker
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
