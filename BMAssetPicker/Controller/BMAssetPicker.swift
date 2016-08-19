@@ -13,6 +13,7 @@ import PhotosUI
 protocol BMAssetPickerPickDelegate: class {
     func pickerDidSelectAsset(asset:PHAsset)
     func pickerDidDeselectAsset(asset:PHAsset)
+    func pickerDidFinishSelect()
 }
 
 public class BMAssetPicker: UIViewController {
@@ -39,9 +40,16 @@ public class BMAssetPicker: UIViewController {
         }
     }
     
+    func cancelButtonPressed() {
+        cancelClosure?(assets:BMAssetManager.selectedAssets)
+        BMAssetManager.selectedAssets.removeAll()
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     
-    func checkAuthorizationStatus() {
-        
+    func doneButtonPressed() {
+        finishClosure?(assets:BMAssetManager.selectedAssets)
+        BMAssetManager.selectedAssets.removeAll()
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     
@@ -84,7 +92,6 @@ public class BMAssetPicker: UIViewController {
     
     func fetchAssetCollections() {
         for subType in self.assetCollectionSubtypes {
-            print("******* TYPE  \(subType) *******")
             let type   = subType.collectionType
             let result = PHAssetCollection.fetchAssetCollectionsWithType(type, subtype: subType, options: nil)
             
@@ -134,6 +141,11 @@ public class BMAssetPicker: UIViewController {
 }
 
 extension BMAssetPicker: BMAssetPickerPickDelegate {
+    func pickerDidFinishSelect() {
+        self.doneButtonPressed()
+    }
+    
+    
     func pickerDidSelectAsset(asset: PHAsset) {
         self.selectionClosure?(asset: asset)
     }

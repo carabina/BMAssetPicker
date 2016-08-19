@@ -10,21 +10,26 @@ import UIKit
 import Photos
 
 class BMAssetsListViewController: UIViewController {
-
-    var album:BMAlbum!
+    
     weak var delegate: BMAssetPickerPickDelegate?
+    
+    var album:BMAlbum!
+    
+    var doneButton: UIBarButtonItem!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        automaticallyAdjustsScrollViewInsets = false
-        view.backgroundColor = UIColor.whiteColor()
-        let cellNib = UINib(nibName: "BMAssetsListCollectionViewCell", bundle: BMAssetBundle)
-        collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "BMAssetsListCollectionViewCell")
-        
+        setupView()
     }
-
+    
+    
+    func selectFinishedButtonPressed() {
+        delegate?.pickerDidFinishSelect()
+    }
+    
+    
     /**
      取消选择 Asset 时更新数字
      */
@@ -36,6 +41,20 @@ class BMAssetsListViewController: UIViewController {
         }
     }
     
+    
+    func setupView() {
+        title = album.collection.localizedTitle
+        automaticallyAdjustsScrollViewInsets = false
+        view.backgroundColor = UIColor.whiteColor()
+        let cellNib = UINib(nibName: "BMAssetsListCollectionViewCell", bundle: BMAssetBundle)
+        collectionView.registerNib(cellNib, forCellWithReuseIdentifier: "BMAssetsListCollectionViewCell")
+        
+        doneButton = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.selectFinishedButtonPressed))
+        self.navigationItem.rightBarButtonItem = doneButton
+        
+        doneButton.enabled = !BMAssetManager.selectedAssets.isEmpty
+    }
+    
 }
 
 extension BMAssetsListViewController: UICollectionViewDataSource {
@@ -43,14 +62,14 @@ extension BMAssetsListViewController: UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.album.asstes.count
     }
-   
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("BMAssetsListCollectionViewCell", forIndexPath: indexPath) as! BMAssetsListCollectionViewCell
         let asset = self.album.asstes[indexPath.row] as! PHAsset
         cell.blind(asset)
         return cell
     }
-
+    
 }
 
 
@@ -69,7 +88,9 @@ extension BMAssetsListViewController: UICollectionViewDelegate {
             delegate?.pickerDidSelectAsset(asset)
             BMAssetManager.selectedAssets.append(asset)
         }
+        
         cell.updateUI()
+        doneButton.enabled = !BMAssetManager.selectedAssets.isEmpty
     }
 }
 

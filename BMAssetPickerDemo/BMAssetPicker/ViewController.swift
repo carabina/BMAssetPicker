@@ -20,13 +20,13 @@ class ViewController: UIViewController {
     @IBAction func onPresentButtonPressed(sender: AnyObject) {
         let vc = BMAssetPicker()
         bm_presentImagePickerController(vc, animated: true, select: { (asset) in
-                print("selected \(asset)")
+                print("******* 选择Asset ******* \n \(asset)")
             }, deselect: { (asset) in
-                print("deselect \(asset)")
+                print("******* 取消选择Asset ******* \n  \(asset)")
             }, cancel: { (assets) in
-                
+                print("******* 取消 ******* \n \(assets)")
             }, finish: { (assets) in
-                
+                print("******* 完成 ******* \n \(assets)")
             }, completion: nil)
     }
 

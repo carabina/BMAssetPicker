@@ -39,6 +39,17 @@ class BMAlbumsListVC: UIViewController {
         
         let albumCell = UINib(nibName: "BMAssetAlbumListTableViewCell", bundle: BMAssetBundle)
         tableView.registerNib(albumCell, forCellReuseIdentifier: "BMAssetAlbumListTableViewCell")
+        
+        
+        let navLeftButton = UIBarButtonItem(title: "取消", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.cancelAction))
+        self.navigationItem.leftBarButtonItem = navLeftButton
+            
+        
+    }
+    
+    
+    func cancelAction() {
+        picker.cancelButtonPressed()
     }
 }
 

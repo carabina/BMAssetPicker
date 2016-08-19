@@ -22,7 +22,7 @@ class BMAssetsListCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectedView.layer.cornerRadius = 10
+        selectedView.layer.cornerRadius = 10.0
         selectedView.layer.borderWidth  = 1
         selectedView.layer.borderColor  = UIColor.whiteColor().CGColor
         selectedView.hidden = true
@@ -42,7 +42,6 @@ class BMAssetsListCollectionViewCell: UICollectionViewCell {
                                                              options: options)
         { (result, info) -> Void in
             self.coverImage.image = result
-            print(result?.size)
         }
         updateUI(animated: false)
     }
@@ -50,7 +49,7 @@ class BMAssetsListCollectionViewCell: UICollectionViewCell {
     func updateUI(animated animated: Bool = true) {
         if BMAssetManager.selectedAssets.contains(asset!) {
             coverImage.layer.borderColor = BMAssetManager.tintColor.CGColor
-            coverImage.layer.borderWidth = 2
+            coverImage.layer.borderWidth = 2.0
             selectedView.hidden = false
             assetSelected = true
             let index = (BMAssetManager.selectedAssets.bm_lastIndexOf(asset!)  ?? 0) + 1
